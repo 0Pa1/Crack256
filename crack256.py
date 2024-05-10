@@ -46,10 +46,13 @@ def crack_password(target_hash, wordlist):
 
 
 def main():
-    parser = arguments()
-    args = parser.parse_args()
-    if not crack_password(args.hash, args.wordlist):
-        print('[!] Password cracking unsuccessful.')
+    try:
+        parser = arguments()
+        args = parser.parse_args()
+        if not crack_password(args.hash, args.wordlist):
+            print('[!] Password cracking unsuccessful.')
+    except KeyboardInterrupt:
+        print('\n[!] Execution interrupted by the user.')
 
 
 if __name__ == '__main__':
